@@ -1,0 +1,22 @@
+name: Kernel Buildbot Docker Container
+
+on:
+  push:
+    paths:
+    - build/package
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - uses: ./.github/actions/build-docker-image
+        with:
+          dockerfile_path: ./package
+          registry: ghcr.io
+          image_name: skyline-operating-system/packager
