@@ -11,9 +11,6 @@ inputs:
     required: true
 
 runs:
-  permissions:
-    contents: read
-    packages: write
   using: 'composite'
   steps:
   - name: Log in to the GitHub Container Registry
