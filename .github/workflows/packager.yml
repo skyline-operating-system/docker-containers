@@ -3,7 +3,7 @@ name: Packager Docker Container
 on:
   push:
     paths:
-    - .github/workflows/packager.yml
+    - .github/workflows/**
     - build/package/**
 
 jobs:
@@ -21,3 +21,4 @@ jobs:
           dockerfile_path: ./package
           registry: ghcr.io
           image_name: skyline-operating-system/packager
+          github_token: ${{ secrets.GITHUB_TOKEN }}
