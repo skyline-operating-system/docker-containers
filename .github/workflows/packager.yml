@@ -1,4 +1,4 @@
-name: Kernel Buildbot Docker Container
+name: Packager Docker Container
 
 on:
   push:
