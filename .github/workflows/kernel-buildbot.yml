@@ -3,7 +3,7 @@ name: Kernel Buildbot Docker Container
 on:
   push:
     paths:
-    - .github/workflows/kernel-buildbot.yml
+    - .github/workflows/**
     - build/kernel/**
 
 jobs:
