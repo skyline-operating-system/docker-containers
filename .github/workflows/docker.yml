@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: skyline-kernel-buildbot-common
+  IMAGE_NAME: skyline-operating-system/kernel-buildbot-common
 
 jobs:
   build-buildbot-common-container:
