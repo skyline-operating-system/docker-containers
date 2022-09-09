@@ -3,6 +3,7 @@ name: Kernel Buildbot Docker Container
 on:
   push:
     paths:
+    - .github/workflows/kernel-buildbot.yml
     - build/kernel/**
 
 jobs:
@@ -20,18 +21,4 @@ jobs:
           dockerfile_path: ./build/kernel
           registry: ghcr.io
           image_name: skyline-operating-system/kernel-buildbot
-
-  build-packager-container:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - uses: ./.github/actions/build-docker-image
-        with:
-          dockerfile_path: ./package
-          registry: ghcr.io
-          image_name: skyline-operating-system/packager
+          github_token: ${{ secrets.GITHUB_TOKEN }}

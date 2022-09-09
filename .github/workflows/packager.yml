@@ -3,7 +3,8 @@ name: Kernel Buildbot Docker Container
 on:
   push:
     paths:
-    - build/package
+    - .github/workflows/packager.yml
+    - build/package/**
 
 jobs:
   build:
