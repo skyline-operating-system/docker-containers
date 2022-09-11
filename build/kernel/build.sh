@@ -14,4 +14,8 @@ SKYLINE_BUILD_DIR="$PWD/build/$(SKYLINE_FULL_ARCH)"
 echo Commit hash: $SKYLINE_SHORT_HASH, Tag: $SKYLINE_TAG, Arch: $SKYLINE_FULL_ARCH, Bootloader: $SKYLINE_BOOTLOADER
 
 [ -d "./build" ] || meson setup . build \
-    -D git_commit_hash="$SKYLINE_SHORT_HASH"
+    -D git_commit_hash="$SKYLINE_SHORT_HASH" \
+    -D git_tag="$SKYLINE_TAG" \
+    -D architecture="$SKYLINE_ARCH" \
+    -D sub_architecture="$SKYLINE_SUB_ARCH" \
+    -D bootloader="$SKYLINE_BOOTLOADER"
