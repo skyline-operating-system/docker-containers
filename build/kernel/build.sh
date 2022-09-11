@@ -13,7 +13,7 @@ SKYLINE_BUILD_DIR="$SKYLINE_SOURCE_DIR/build/$SKYLINE_FULL_ARCH"
 
 echo Commit hash: $SKYLINE_SHORT_HASH, Tag: $SKYLINE_TAG, Arch: $SKYLINE_FULL_ARCH, Bootloader: $SKYLINE_BOOTLOADER
 
-if [ -d "$SKYLINE_SOURCE_DIR/build" ]
+if [ ! -d "$SKYLINE_SOURCE_DIR/build" ]
 then
     cd "$SKYLINE_SOURCE_DIR" && meson setup . "$SKYLINE_BUILD_DIR" \
         -D git_commit_hash="$SKYLINE_SHORT_HASH" \
