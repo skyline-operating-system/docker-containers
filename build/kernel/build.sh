@@ -1,6 +1,16 @@
 #!/bin/sh
 
-printenv
+SKYLINE_SHORT_HASH=$(echo $SKYLINE_COMMIT_HASH | cut -c 1-8)
 
-echo Commit hash: $SKYLINE_COMMIT_HASH, Tag: $SKYLINE_TAG, Arch: $SKYLINE_ARCH, Subarch: $SKYLINE_SUB_ARCH, Bootloader: $SKYLINE_BOOTLOADER
-ls /code/kernel
+if [ -z "$SKYLINE_SUB_ARCH" ]
+    SKYLINE_FULL_ARCH="$SKYLINE_ARCH"
+else
+    SKYLINE_FULL_ARCH="$SKYLINE_ARCH/$SKYLINE_SUB_ARCH"
+fi
+
+SKYLINE_BUILD_DIR="$PWD/build/$(SKYLINE_FULL_ARCH)"
+
+echo Commit hash: $SKYLINE_SHORT_HASH, Tag: $SKYLINE_TAG, Arch: $SKYLINE_FULL_ARCH, Bootloader: $SKYLINE_BOOTLOADER
+
+[ -d "./build" ] || meson setup . build \
+    -D git_commit_hash="$SKYLINE_SHORT_HASH"
