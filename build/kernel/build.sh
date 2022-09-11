@@ -19,4 +19,4 @@ echo Commit hash: $SKYLINE_SHORT_HASH, Tag: $SKYLINE_TAG, Arch: $SKYLINE_FULL_AR
     -D architecture="$SKYLINE_ARCH" \
     -D sub_architecture="$SKYLINE_SUB_ARCH" \
     -D bootloader="$SKYLINE_BOOTLOADER" \
-    --cross-file "arch/$SKYLINE_FULL_ARCH/crossfile.ini"
+    --cross-file "boot/$SKYLINE_FULL_ARCH/$SKYLINE_BOOTLOADER/crossfile.ini"
