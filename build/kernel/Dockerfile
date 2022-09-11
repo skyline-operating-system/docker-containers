@@ -8,4 +8,4 @@ COPY ./build.sh /build.sh
 VOLUME ["/code/kernel"]
 WORKDIR "/code/kernel"
 
-ENTRYPOINT [ "sh", "/build.sh" ]
+ENTRYPOINT [ "/build.sh" ]
