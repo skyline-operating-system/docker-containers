@@ -25,4 +25,4 @@ then
         --cross-file "boot/$SKYLINE_FULL_ARCH/$SKYLINE_BOOTLOADER/crossfile.ini"
 fi
 
-cd "$SKYLINE_SOURCE_DIR" && meson compile -C "$SKYLINE_BUILD_DIR"
+cd "$SKYLINE_BUILD_DIR" && meson compile
