@@ -9,14 +9,19 @@ else
     SKYLINE_FULL_ARCH="$SKYLINE_ARCH/$SKYLINE_SUB_ARCH"
 fi
 
-SKYLINE_BUILD_DIR="$PWD/build/$SKYLINE_FULL_ARCH"
+SKYLINE_BUILD_DIR="$SKYLINE_SOURCE_DIR/build/$SKYLINE_FULL_ARCH"
 
 echo Commit hash: $SKYLINE_SHORT_HASH, Tag: $SKYLINE_TAG, Arch: $SKYLINE_FULL_ARCH, Bootloader: $SKYLINE_BOOTLOADER
 
-[ -d "./build" ] || meson setup . build \
-    -D git_commit_hash="$SKYLINE_SHORT_HASH" \
-    -D git_tag="$SKYLINE_TAG" \
-    -D architecture="$SKYLINE_ARCH" \
-    -D sub_architecture="$SKYLINE_SUB_ARCH" \
-    -D bootloader="$SKYLINE_BOOTLOADER" \
-    --cross-file "boot/$SKYLINE_FULL_ARCH/$SKYLINE_BOOTLOADER/crossfile.ini"
+if [ -d "$SKYLINE_SOURCE_DIR/build" ]
+then
+    cd "$SKYLINE_SOURCE_DIR" && meson setup . "$SKYLINE_BUILD_DIR" \
+        -D git_commit_hash="$SKYLINE_SHORT_HASH" \
+        -D git_tag="$SKYLINE_TAG" \
+        -D architecture="$SKYLINE_ARCH" \
+        -D sub_architecture="$SKYLINE_SUB_ARCH" \
+        -D bootloader="$SKYLINE_BOOTLOADER" \
+        --cross-file "boot/$SKYLINE_FULL_ARCH/$SKYLINE_BOOTLOADER/crossfile.ini"
+fi
+
+cd "$SKYLINE_SOURCE_DIR" && meson compile -C "$SKYLINE_BUILD_DIR"
