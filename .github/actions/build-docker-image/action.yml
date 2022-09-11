@@ -31,6 +31,5 @@ runs:
     with:
       context: ${{ inputs.dockerfile_path }}
       push: true
-      tags:
-       - latest
+      tags: ghcr.io/skyline-operating-system/kernel-buildbot:latest
       labels: ${{ steps.meta.outputs.labels }}
